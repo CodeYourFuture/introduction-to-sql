@@ -32,9 +32,45 @@ For simplicity, our data is stored in an SQLite database; this is a self-contain
 
 We're going to use [DB Browser for SQLite](http://sqlitebrowser.org/) to access our database, which is available for Windows, OS X, and Linux; please download it from the linked website.
 
-Once it's installed and running, and you've cloned this repository, click _Open Database_, navigate to your copy of said repository, and open _surgery.sqlite_. You'll be greeted with the structure of our database. You may notice that there is a _Browse Data_ tab, but we will not be using this directly; instead, let's write our first query.
+Once it's installed and running, and you've cloned this repository, click _Open Database_, navigate to your copy of said repository, and open _surgery.sqlite_. You'll be greeted with the structure of our database. You may notice that there is a _Browse Data_ tab, but we will not be using this directly; instead, click the _Execute SQL_ tab so we can write our first query.
 
 
 ## `SELECT`
 
-The `SELECT` statement returns a series of records from
+The `SELECT` statement returns a series of records, and specific columns, from one or more tables. To list the names of all the patients, we can select the `name` column from the `patient` table:
+
+```sql
+SELECT name from patient
+```
+
+Upon clicking the _play_ icon, you should see the names of the two patients in our database.
+
+We can use a comma delimiter to select multiple columns from the table. Try running this query:
+
+```sql
+SELECT name, phoneNumber from patient
+```
+
+As one would expect, both the name and phone number associated with each record are returned.
+
+An asterisk (`*`) wildcard can be used to select all of the columns in a table. Let's execute this against the `appointment` table:
+
+```sql
+SELECT * from appointment
+```
+
+This will return the `id`, `patientId`, and `date` fields of all of our appointments.
+
+
+## The `WHERE` Clause
+
+The `SELECT` statement also supports the `WHERE` clause, which limited the returned record based upon a number of criteria. This is useful for searching for rows based upon the values of certain fields.
+
+To select any patients whose doctor is Peter Overmars (`id` = 1), we can specify this SELECT statement with a combined WHERE clause:
+
+```sql
+SELECT * from patient
+WHERE doctorId = 1
+```
+
+We should only see Jimmie Vaughan's record.
