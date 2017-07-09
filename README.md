@@ -21,7 +21,7 @@ In order to accomodate for multiple appointment dates, this single-table approac
 
 It would be better to break this table down into respective tables for each entity:
 
-![Separate tables](http://i.imgur.com/80X1Y3M.png)
+![Separate tables](http://i.imgur.com/EBRmA3N.png)
 
 Some of the tables contain IDs of related records, such as the appointment table's `id` column, but we still have to explicitly define our relationships. Before we jump into this, let's run some simple queries against the database.
 
