@@ -20,3 +20,21 @@ In order to accomodate for multiple appointment dates, this single-table approac
 * Having multiple instances of the same data can result in incorrect input; take a look at the final record
 
 It would be better to break this table down into respective tables for each entity:
+
+![Separate tables](http://i.imgur.com/80X1Y3M.png)
+
+Some of the tables contain IDs of related records, such as the appointment table's `id` column, but we still have to explicitly define our relationships. Before we jump into this, let's run some simple queries against the database.
+
+
+## Browsing the database
+
+For simplicity, our data is stored in an SQLite database; this is a self-contained file that can be read from and written to with no configuration, in contrast to MySQL that typically requires a connection string.
+
+We're going to use [DB Browser for SQLite](http://sqlitebrowser.org/) to access our database, which is available for Windows, OS X, and Linux; please download it from the linked website.
+
+Once it's installed and running, and you've cloned this repository, click _Open Database_, navigate to your copy of said repository, and open _surgery.sqlite_. You'll be greeted with the structure of our database. You may notice that there is a _Browse Data_ tab, but we will not be using this directly; instead, let's write our first query.
+
+
+## `SELECT`
+
+The `SELECT` statement returns a series of records from
